@@ -1,9 +1,137 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-<title>comgd.com</title>
+    <!-- 网页基础编码&移动端适配，不要修改 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 【修改点1：浏览器标签标题】替换引号内文字 -->
+    <title>我的个人空间 | www.comgd.com</title>
+
+    <!-- 引入样式框架&图标库，不用动，提供页面样式和小图标 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- 主题配色配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        main: '#3B82F6',/*【修改点2：主题主色调，十六进制色值，可换喜欢的颜色】当前是蓝色*/
+                        dark: '#1E293B'/*页面背景深色，不建议修改*/
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- 自定义动画：平滑滚动、玻璃毛玻璃、头像浮动动画，无需改动 -->
+    <style>
+        html {scroll-behavior: smooth;}/*点击导航自动滚动到对应板块*/
+        .bg-glass{background: rgba(255,255,255,0.1);backdrop-filter: blur(12px);}/*半透明玻璃卡片效果*/
+        .animate-float{animation: float 4s ease-in-out infinite;}/*头像上下浮动动画*/
+        @keyframes float{0%,100%{transform: translateY(0px);}50%{transform: translateY(-12px);}}
+    </style>
 </head>
-<body>
-<h1>欢迎访问 comgd.com</h1>
+<!-- 页面整体渐变背景，如需换背景修改from-slate-900 via-dark to-indigo-950色值 -->
+<body class="bg-gradient-to-br from-slate-900 via-dark to-indigo-950 min-h-screen text-gray-100">
+
+    <!-- ========== 顶部导航栏【修改点3：导航文字&链接】 ========== -->
+    <nav class="fixed top-0 w-full bg-glass z-50 py-4 px-6">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <!-- 左侧站点LOGO名称 -->
+            <a href="#" class="text-2xl font-bold text-main">MySpace</a>
+            <!-- 右侧导航菜单，增删/改文字在这里 -->
+            <div class="space-x-6">
+                <a href="#home" class="hover:text-main transition">首页</a>
+                <a href="#about" class="hover:text-main transition">关于我</a>
+                <a href="#skill" class="hover:text-main transition">技能</a>
+                <a href="#link" class="hover:text-main transition">联系方式</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== 首屏欢迎横幅（主页大图区域）【修改点4：自我介绍文案】 ========== -->
+    <section id="home" class="pt-32 pb-24 px-6">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10">
+            <div class="flex-1">
+                <p class="text-main mb-2 text-lg">你好，欢迎来到我的个人空间</p>
+                <!-- 你的昵称/头衔 -->
+                <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight mb-4">热爱折腾 | 技术爱好者</h1>
+                <!-- 简短个人介绍 -->
+                <p class="text-gray-300 text-lg mb-6">专注建站、域名与服务器折腾，分享日常与学习记录。</p>
+                <a href="#about" class="inline-block bg-main px-7 py-3 rounded-full hover:bg-blue-600 transition shadow-lg shadow-blue-900/50">了解更多 <i class="fa fa-arrow-right ml-2"></i></a>
+            </div>
+            <!-- 右侧头像图标，fa-user-circle是图标，想换图标去font-awesome图标库找代码替换 -->
+            <div class="w-64 h-64 rounded-full bg-main/20 flex items-center justify-center animate-float">
+                <i class="fa fa-user-circle text-[120px] text-main"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 关于我板块【修改点5：个人简介正文】 ========== -->
+    <section id="about" class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12 relative after:block after:w-16 after:h-1 after:bg-main after:mx-auto after:mt-3">关于我</h2>
+            <div class="bg-glass rounded-2xl p-8">
+                <!-- 中间大段自我介绍，整段替换成自己的经历 -->
+                <p class="text-gray-300 leading-loose">日常热衷于域名投资、GitHub Pages建站、VPS运维，喜欢钻研各类网络技术。本个人站点基于GitHub Pages免费搭建，后续会持续更新随笔、项目记录与资源分享。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 技能卡片区域【修改点6：3个技能卡片标题+描述，可新增/删除卡片】 ========== -->
+    <section id="skill" class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12 relative after:block after:w-16 after:h-1 after:bg-main after:mx-auto after:mt-3">技能方向</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- 卡片1：前端建站 -->
+                <div class="bg-glass rounded-xl p-6 hover:-translate-y-2 transition duration-300">
+                    <i class="fa fa-code text-4xl text-main mb-4"></i><!--图标：代码图标-->
+                    <h3 class="text-xl font-semibold mb-2">前端建站</h3>
+                    <p class="text-gray-400">HTML/CSS静态网页，GitHub Pages部署</p>
+                </div>
+                <!-- 卡片2：服务器运维 -->
+                <div class="bg-glass rounded-xl p-6 hover:-translate-y-2 transition duration-300">
+                    <i class="fa fa-server text-4xl text-main mb-4"></i><!--图标：服务器图标-->
+                    <h3 class="text-xl font-semibold mb-2">服务器运维</h3>
+                    <p class="text-gray-400">Linux系统、代理服务、BBR优化配置</p>
+                </div>
+                <!-- 卡片3：域名解析 -->
+                <div class="bg-glass rounded-xl p-6 hover:-translate-y-2 transition duration-300">
+                    <i class="fa fa-globe text-4xl text-main mb-4"></i><!--图标：地球/域名图标-->
+                    <h3 class="text-xl font-semibold mb-2">域名解析</h3>
+                    <p class="text-gray-400">自定义域名绑定、DNS解析配置</p>
+                </div>
+                <!-- 想要多加技能：复制上面一整块div，改图标、标题、文字即可 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 联系方式【修改点7：邮箱、跳转链接】 ========== -->
+    <section id="link" class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12 relative after:block after:w-16 after:h-1 after:bg-main after:mx-auto after:mt-3">联系我</h2>
+            <div class="flex justify-center gap-8 flex-wrap">
+                <!-- GitHub图标：href引号内替换你的github主页地址 -->
+                <a href="https://github.com/wwwwwren-afk" class="bg-glass w-20 h-20 rounded-full flex items-center justify-center hover:bg-main/30 transition">
+                    <i class="fa fa-github text-3xl"></i>
+                </a>
+                <!-- 邮箱图标：mailto:后面改成你的邮箱 -->
+                <a href="mailto:wwwww.ren@gmail.com" class="bg-glass w-20 h-20 rounded-full flex items-center justify-center hover:bg-main/30 transition">
+                    <i class="fa fa-envelope text-3xl"></i>
+                </a>
+                <!-- 备用链接 -->
+                <a href="#" class="bg-glass w-20 h-20 rounded-full flex items-center justify-center hover:bg-main/30 transition">
+                    <i class="fa fa-link text-3xl"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 底部页脚【修改点8：版权文字、站点域名】 ========== -->
+    <footer class="py-8 text-center border-t border-gray-700 text-gray-400">
+        <p>©2020 www.comgd.com | Powered by GitHub Pages</p>
+    </footer>
 </body>
 </html>
